@@ -1,0 +1,213 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+body{
+	overflow: hidden;
+    background:#a55af9;
+   /* background-image: linear-gradient(#5665d4,#4dbaa9)*/
+}
+
+#imgs img{
+	width:20px;
+	height:20px;
+	position: absolute;
+    top:-20px;
+    opacity: .5;
+}
+#imgs .small{
+	width:10px;
+	height:10px;
+	position: absolute;
+
+}
+#imgs .smallM{
+	width:15px;
+	height:15px;
+	position: absolute;
+
+}
+#imgs .smallB{
+     width:20px;
+     height:20px;
+     position: absolute;
+
+}
+#div1{
+     width:100px;
+     height:100px;
+     background: #fff;
+     position: absolute;
+     top:100px;
+     left:-120px;
+     border-radius: 50%;
+}
+#div2{
+     width:100px;
+     height:100px;
+     background: #fff;
+     position: absolute;
+     top:100px;
+     right:-120px;
+     border-radius: 50%;
+}
+#div3{
+     width:100px;
+     height:100px;
+     background: #fff;
+     position: absolute;
+     top:100px;
+     left:-120px;
+     border-radius: 50%;
+}
+#div4{
+     width:100px;
+     height:100px;
+     background: #fff;
+     position: absolute;
+     top:100px;
+     right:-120px;
+     border-radius: 50%;
+}
+
+
+
+#star {
+     width: 600px;
+     height: 3px;
+     border: 1px solid #535353;
+     margin: 0 auto;
+     margin-top: 300px;
+     position: relative;
+}
+#loading {
+     width: 0px;
+     height: 3px;
+     background: #535353;
+}
+#loaddrgon {
+     position: absolute;
+     top: -43px;
+     left: -25px;
+}
+
+</style>
+</head>
+<body>
+<section id="imgs"></section>
+<div id="div1">
+</div>
+<div id="div2">
+</div>
+<div id="div3">
+</div>
+<div id="div4">
+</div>
+
+
+
+
+<div id="star">
+     <div id="loading">
+          <img src="imgs/drgon1.png" id="loaddrgon"/>
+     </div>
+</div>
+<script src="miaov.js"></script>
+<script>
+     	  
+     	  // body.style.background="#368dc6"
+     	  var d=0
+            // var timer = 0
+          var sec=document.getElementById('imgs')
+          var imgs=sec.getElementsByTagName('img')
+
+          create()
+          function create(){
+               for(var i=0;i<100;i++){
+                    var img = document.createElement("img")
+                    img.src="xue.png"
+                    var m = Math.random()*window.innerWidth
+                    img.style.left=m+"px"
+                    
+                    img.className="small"
+                    sec.appendChild(img)
+
+               }
+               for(var i=0;i<100;i++){
+                    var img = document.createElement("img")
+                    img.src="xue.png"
+                    var m = Math.random()*window.innerWidth
+                    img.style.left=m+"px"
+                    
+                    img.className="smallM"
+                   	sec.appendChild(img)
+
+               }
+               for(var i=0;i<100;i++){
+                    var img = document.createElement("img")
+                    img.src="xue.png"
+                    var m = Math.random()*window.innerWidth
+                    img.style.left=m+"px"
+                    
+                    img.className="smallB"
+                    sec.appendChild(img)
+
+               }
+          }
+          re()
+          function re(){
+               var i=0
+               
+              
+               setInterval(function(){    
+               var ran =Math.floor(Math.random()*imgs.length)       
+                    mTween(imgs[ran],{top:1100},6000,"linear",function(){
+                     imgs[ran].style.top=-20+"px"                                         
+                   }) 
+                                                 
+               },20)
+                         
+          }
+          var div1=document.getElementById('div1')
+          var div2=document.getElementById('div2')
+          var div3=document.getElementById('div3')
+          var div4=document.getElementById('div4')  
+          setTimeout(function(){
+                mTween(div1,{left:500,top:500},2000,"bounceOut")
+                mTween(div2,{right:500,top:500},2000,"bounceOut")
+                mTween(div3,{left:700,top:500},2000,"bounceOut")
+                mTween(div4,{right:700,top:500},2000,"bounceOut")
+          },5000)
+         
+
+          var star = document.getElementById('star');
+          var loading = document.getElementById('loading');
+          var loaddrgon = document.getElementById('loaddrgon');
+          var timer1 = 0;
+          var timer2 = 0;
+          var arr = ["imgs/drgon2.png","imgs/drgon1.png"];
+          var tab = true;
+          timer1 = setTimeout(function() {
+          clearTimeout(timer1);
+          timer2 = setInterval(function() {
+               if(loading.style.width == 600 + "px") {
+                    clearInterval(timer2);
+                    star.style.display="none"
+               }
+               if(tab == true ) {
+                    loaddrgon.src =  arr[0];
+                    console.log(1)
+               }else {
+                    loaddrgon.src =  arr[1];
+                    console.log(2)
+               }
+               tab = !tab;
+          },100)
+          mTween(loading,{width: 600},4000,"linear");
+          mTween(loaddrgon,{left: 575},4000,"linear");
+          },1000)
+</script>
+</body>
+</html>
